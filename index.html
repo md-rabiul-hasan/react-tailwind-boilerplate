@@ -2,12 +2,83 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Product List | Learn with Sumit</title>
+    <link rel="stylesheet" href="./styles/output.css" />
   </head>
+
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.jsx"></script>   
+
+    <!-- This script is for demo purpose only. You are not allowed to copy and paste this script -->
+    <script>
+      const menuButton = document.getElementById("menu-button");
+      const dropdown = document.querySelector('[role="menu"]');
+
+      // Function to toggle the dropdown
+      function toggleDropdown() {
+        const expanded = menuButton.getAttribute("aria-expanded") === "true";
+
+        // Toggle the aria-expanded attribute
+        menuButton.setAttribute("aria-expanded", !expanded);
+
+        // Toggle the visibility of the dropdown
+        if (expanded) {
+          dropdown.classList.add("hidden");
+         
+        } else {
+          dropdown.classList.remove("hidden");
+        }
+      }
+
+      // Add click event listener to the button
+      toggleDropdown();
+      menuButton.addEventListener("click", toggleDropdown);
+
+      // Close the dropdown when clicking outside
+      document.addEventListener("click", (event) => {
+        if (!menuButton.contains(event.target) && !dropdown.contains(event.target)) {
+          menuButton.setAttribute("aria-expanded", "false");
+          dropdown.classList.add("hidden");
+        }
+      });
+
+      // Get the button and dropdown elements
+      const filterButton = document.getElementById("filter-button");
+      const filterDropdown = document.getElementById("filter-dropdown");
+      const filterOptions = filterDropdown.querySelectorAll('input[type="checkbox"]');
+
+      // Function to toggle the dropdown
+      function toggleFilterDropdown() {
+        const expanded = filterButton.getAttribute("aria-expanded") === "true";
+
+        // Toggle the aria-expanded attribute
+        filterButton.setAttribute("aria-expanded", !expanded);
+
+        // Toggle the visibility of the dropdown
+        filterDropdown.classList.toggle("hidden");
+      }
+
+      // Add click event listener to the button
+      filterButton.addEventListener("click", toggleFilterDropdown);
+
+      // Close the dropdown when clicking outside
+      document.addEventListener("click", (event) => {
+        if (!filterButton.contains(event.target) && !filterDropdown.contains(event.target)) {
+          filterButton.setAttribute("aria-expanded", "false");
+          filterDropdown.classList.add("hidden");
+        }
+      });
+
+      // Handle checkbox changes
+      filterOptions.forEach((option) => {
+        option.addEventListener("change", (event) => {
+          console.log(`${event.target.id} is ${event.target.checked ? "checked" : "unchecked"}`);
+          // Here you can add your logic to handle the filter change
+        });
+      });
+    </script>
+    <!-- This script is for demo purpose only. You are not allowed to copy and paste this script -->
   </body>
 </html>

@@ -1,16 +1,19 @@
 import { useState } from 'react'
 import './App.css'
+import Footer from './components/Footer'
+import Header from './components/Header'
+import Hero from './components/Hero'
+import ProductLayouts from './components/product/ProductLayouts'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div className="flex items-center justify-center h-screen bg-blue-500">
-      <h1 className="text-3xl font-bold text-white">
-        Hello, Tailwind with React!
-      </h1>
-    </div>
+      <Header />
+      <Hero />
+      <ProductLayouts />
+      <Footer />
     </>
   )
 }
