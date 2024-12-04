@@ -1,13 +1,4 @@
+/* src/index.css or src/main.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer utilities {
-    td {
-        @apply p-0
-    }
-
-    .container { 
-        @apply px-4
-    }
-}
